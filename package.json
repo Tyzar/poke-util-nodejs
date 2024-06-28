@@ -1,0 +1,17 @@
+{
+  "name": "com.test.pokeutil",
+  "version": "1.0.0",
+  "description": "Utility service for pokemon api test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "tyzar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
