@@ -4,16 +4,23 @@ const router = express.Router();
 const pokeUtilService = require('../services/poke-util-service');
 const {generalError,updateCountInvalid,nameEmptyError} = require('../domain/rename-pokemon');
 
+router.get('/', (req,res) => {
+    res.status(200).json({
+        success: true
+    })
+})
+
 router.post('/catch', (req, res) => {
     let result = pokeUtilService.catchPokemon();
     if(result.error){
-        return res.status(500).json({
+        res.status(500).json({
             status: false,
             message: "Something wrong in the server"
         });       
+        return;
     }
 
-    return res.status(200).json({
+    res.status(200).json({
         status: true,
         data: result
     });
@@ -22,14 +29,14 @@ router.post('/catch', (req, res) => {
 router.post('/release', (req,res) => {
     let result = pokeUtilService.releasePokemon()
     if(result.error){
-        return res.status(500).json({
+        res.status(500).json({
             status: false,
             message: "Something wrong in the server"
         });
-        
+        return;
     }
     
-    return res.status(200).json({
+    res.status(200).json({
         status: true,
         data: result
     });
@@ -61,7 +68,7 @@ router.post('/rename', (req,res) => {
         return;
     }
 
-    return res.status(200).json({
+    res.status(200).json({
         status: true,
         data: result
     });
